@@ -14,7 +14,7 @@ const dcbot = new Client({
 eventHandler(dcbot);
 
 dcbot.on('messageCreate', (message) => {
-  console.log(`🗨️  ${message.channel.name} --> ${message.member.displayName} has sent ${message}`)
+  console.log(`🗨️  ${message.channel.name} --> ${message.member.displayName} -->\t${message}`)
 })
 
 dcbot.on('interactionCreate', async (interaction) => {
