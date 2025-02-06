@@ -1,5 +1,6 @@
 require('dotenv').config();
 const { Client, IntentsBitField } = require('discord.js');
+const eventHandler = require('./handlers/eventHandler');
 
 const dcbot = new Client({
   intents: [
@@ -10,14 +11,12 @@ const dcbot = new Client({
   ]
 });
 
+eventHandler(dcbot);
+
+
 dcbot.on('messageCreate', (msg) => {
   console.log(`🗨️  ${msg}`);
 })
-
-dcbot.on('ready', () => {
-  console.log('✅ The bot is ready');
-})
-
 
 // slash command interactions
 dcbot.on('interactionCreate', (interaction) =>  {
