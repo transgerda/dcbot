@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { REST, Routes, ApplicationCommandOptionType } = require('discord.js');
+const { REST, Routes, ApplicationCommandOptionType, ApplicationCommandType } = require('discord.js');
 
 const commands = [
   {
@@ -14,6 +14,42 @@ const commands = [
         name: 'prompt',
         description: 'Prompt for chat-gpt',
         type: ApplicationCommandOptionType.String,
+        required: true,
+      },
+    ]
+  },
+  {
+    name: 'submit_opdracht',
+    description: 'Send the excersize to the database so other people can acces it with the /get command',
+    options: [
+      {
+        name: 'week',
+        description: 'Week number of the excersize',
+        type: ApplicationCommandOptionType.Number,
+        required: true,
+      },
+      {
+        name: 'opdracht_nr',
+        description: 'Week number of the excersize',   
+        type: ApplicationCommandOptionType.Number,
+        required: true,
+      },
+    ]
+  },
+  {
+    name: 'get_opdracht',
+    description: 'Request an excersize from the database',
+    options: [
+      {
+        name: 'week',
+        description: 'Week number of the excersize',
+        type: ApplicationCommandOptionType.Number,
+        required: true,
+      },
+      {
+        name: 'opdracht_nr',
+        description: 'Week number of the excersize',
+        type: ApplicationCommandOptionType.Number,
         required: true,
       },
     ]

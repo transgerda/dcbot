@@ -15,7 +15,7 @@ dcbot.on('messageCreate', (msg) => {
 })
 
 dcbot.on('ready', () => {
-  console.log('✅ The bot is ready')
+  console.log('✅ The bot is ready');
 })
 
 
@@ -34,7 +34,7 @@ dcbot.on('interactionCreate', (interaction) =>  {
   }
 })
 
-// role interactions 
+// vakken role interactions
 dcbot.on('interactionCreate', async (interaction) => {
   const allRolls = ['1336401515493068883', '1336402852159029370','1336402877027188848', '1336402908614361118', '1336402949726797996'];
   
@@ -69,11 +69,10 @@ dcbot.on('interactionCreate', async (interaction) => {
         content: 'Kan het vak niet vinden! vertel Martijn',
       })
       return;
-    }
-
-    const hasRole = interaction.member.roles.cache.has(role.id);
+    }    
     
     // if the member already has the role then remove it
+    const hasRole = interaction.member.roles.cache.has(role.id);
     if (hasRole) {
       await interaction.member.roles.remove(role);
       await interaction.editReply(`${role.name} is verwijderd van je profiel.`);

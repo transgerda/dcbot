@@ -44,6 +44,29 @@ const rolesAction = [
     id: '0',
     label: 'geen!',
   },
+];
+
+const rolesCool = [
+  {
+    id: '1337006949820010569',
+    label: 'sigma boy',
+  },
+  {
+    id: '1337007061447344138',
+    label: 'asperge tijger',
+  },
+  {
+    id: '1337007119555235874',
+    label: 'vlees vulkaan',
+  },
+  {
+    id: '1337007234449805322',
+    label: 'vscode master ++',
+  },
+  {
+    id: '1337007411797561365',
+    label: 'suiker paps',
+  },
 ]
 
 dcbot.on('ready', async (c) => {
@@ -53,6 +76,7 @@ dcbot.on('ready', async (c) => {
 
     const row = new ActionRowBuilder();
     const specialRow = new ActionRowBuilder();
+    const coolRow = new ActionRowBuilder();
 
     
     roles.forEach((role) => {
@@ -66,10 +90,21 @@ dcbot.on('ready', async (c) => {
         new ButtonBuilder().setCustomId(role.id).setLabel(role.label).setStyle(ButtonStyle.Danger)
       )
     })
+
+    rolesCool.forEach((role) => {
+      coolRow.components.push(
+        new ButtonBuilder().setCustomId(role.id).setLabel(role.label).setStyle(ButtonStyle.Success)
+      )
+    })
     
     await channel.send({
       content: 'Kies je favoriete vakken hieronder hieronder',
       components: [row, specialRow],
+    })
+    
+    await channel.send({
+      content: 'Kies hier jouw super coole roles',
+      components: [coolRow],
     });
     
     console.log('✅ Roles message send')
