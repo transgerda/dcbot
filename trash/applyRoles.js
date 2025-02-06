@@ -1,27 +1,8 @@
-require('dotenv').config();
-const { Client, IntentsBitField } = require('discord.js');
-const eventHandler = require('./handlers/eventHandler');
-
-const dcbot = new Client({
-  intents: [
-    IntentsBitField.Flags.Guilds,
-    IntentsBitField.Flags.GuildMembers,
-    IntentsBitField.Flags.GuildMessages,
-    IntentsBitField.Flags.MessageContent
-  ]
-});
-
-eventHandler(dcbot);
-
-dcbot.on('messageCreate', (message) => {
-  console.log(`🗨️  ${message.channel.name} --> ${message.member.displayName} has sent ${message}`)
-})
-
-dcbot.on('interactionCreate', async (interaction) => {
+module.exports = async (dcbot, interaction) => {
   const allRolls = ['1336401515493068883', '1336402852159029370','1336402877027188848', '1336402908614361118', '1336402949726797996'];
   
   try {
-    if (!interaction.isButton()) return;
+    // if (!interaction.isButton()) return;
     await interaction.deferReply({ ephemeral: true });
     
     const customId = interaction.customId;
@@ -67,7 +48,4 @@ dcbot.on('interactionCreate', async (interaction) => {
   } catch (e) {
     console.log(e);
   }
-})
-
-// make the bot online
-dcbot.login(process.env.TOKEN);
+}

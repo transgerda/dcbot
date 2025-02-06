@@ -1,5 +1,5 @@
 const path = require('path');
-const getAllFiles = require("../utils/getAllFiles");
+const getAllFiles = require('../utils/getAllFiles');
 
 module.exports = (dcbot) => {
   const eventFolders = getAllFiles(path.join(__dirname, '..', 'events'), true);
@@ -7,7 +7,7 @@ module.exports = (dcbot) => {
   for (const eventFolder of eventFolders) {
     const eventFiles = getAllFiles(eventFolder);
     eventFiles.sort((a, b) => a > b);
-    
+
     const eventName = eventFolder.split('/').pop();
 
     dcbot.on(eventName, async (arg) => {
@@ -15,6 +15,6 @@ module.exports = (dcbot) => {
         const eventFunction = require(eventFile);
         await eventFunction(dcbot, arg);
       }
-    })
+    });
   }
 };

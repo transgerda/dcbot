@@ -5,7 +5,15 @@ module.exports = {
   // testOnly: Boolean,
   // options: Object[],
 
-  callback: (dcbot, interaction) => {
-    interaction.reply(`Pong! ${dcbot.ws.ping}`);
-  }
+  callback: async (client, interaction) => {
+    await interaction.deferReply();
+
+    const reply = await interaction.fetchReply();
+
+    const ping = reply.createdTimestamp - interaction.createdTimestamp;
+
+    interaction.editReply(
+      `Pong! Client ${ping}ms | Websocket: ${client.ws.ping}ms`
+    );
+  },
 }
