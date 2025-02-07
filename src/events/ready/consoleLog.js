@@ -1,3 +1,3 @@
 module.exports = (dcbot) => {
-  console.log(`${dcbot.user.tag} is online`);
+  console.log(`${dcbot.user.username} is online`);
 };

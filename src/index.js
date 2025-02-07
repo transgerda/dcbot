@@ -13,9 +13,9 @@ const dcbot = new Client({
 
 eventHandler(dcbot);
 
-dcbot.on('messageCreate', (message) => {
-  console.log(`🗨️  ${message.channel.name} --> ${message.member.displayName} -->\t${message}`)
-})
+// dcbot.on('messageCreate', (message) => {
+//   console.log(`🗨️  ${message.channel.name} --> ${message.member.displayName} -->\t${message}`)
+// })
 
 dcbot.on('interactionCreate', async (interaction) => {
   const allRolls = ['1336401515493068883', '1336402852159029370','1336402877027188848', '1336402908614361118', '1336402949726797996'];
